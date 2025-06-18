@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "Pretender",
+  "version": "1.1",
+  "description": "帮助用户在网页中轻松输入预设文本，具有高度自定义和隐蔽性",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "commands": {
+    "toggle-display": {
+      "suggested_key": {
+        "default": "Alt+X"
+      },
+      "description": "显示/隐藏辅助文本"
+    }
+  }
+}

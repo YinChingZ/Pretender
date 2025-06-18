@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>文本辅助输入增强版</title>
+  <link rel="stylesheet" href="popup.css">
+  <meta charset="UTF-8">
+</head>
+<body>
+  <div class="container">
+    <h1>文本辅助输入</h1>
+    
+    <!-- 文本预设管理 -->
+    <div class="presets-section">
+      <div class="preset-header">
+        <label for="preset-select">文本预设:</label>
+        <select id="preset-select"></select>
+        <button id="new-preset" class="small-button" title="新建预设">+</button>
+        <button id="delete-preset" class="small-button" title="删除当前预设">−</button>
+      </div>
+      <input type="text" id="preset-name" placeholder="预设名称" class="full-width">
+      <textarea id="text-input" placeholder="在此输入或粘贴要辅助输入的文本..." rows="8" cols="40"></textarea>
+    </div>
+
+    <!-- 主要操作按钮 -->
+    <div class="button-row">
+      <button id="save-button">保存文本</button>
+      <button id="toggle-display">显示辅助</button>
+    </div>
+    
+    <!-- 自定义选项标签面板 -->
+    <div class="tabs">
+      <div class="tab-header">
+        <button class="tab-button active" data-tab="appearance">外观</button>
+        <button class="tab-button" data-tab="behavior">行为</button>
+        <button class="tab-button" data-tab="advanced">高级</button>
+      </div>
+      
+      <!-- 外观设置面板 -->
+      <div class="tab-content active" id="appearance-tab">
+        <div class="setting-row">
+          <label for="opacity-range">背景透明度:</label>
+          <input type="range" id="opacity-range" min="0" max="1" step="0.1" value="0.7">
+          <span id="opacity-value">70%</span>
+        </div>
+        
+        <div class="setting-row">
+          <label for="font-size">字体大小:</label>
+          <input type="number" id="font-size" min="10" max="24" value="14">
+          <span>px</span>
+        </div>
+        
+        <div class="setting-row">
+          <label for="preview-length">预览字符数:</label>
+          <input type="number" id="preview-length" min="1" max="50" value="15">
+        </div>
+        
+        <div class="setting-row">
+          <label for="width-setting">提示框宽度:</label>
+          <input type="number" id="width-setting" min="50" max="500" value="300">
+          <span>px</span>
+        </div>
+        
+        <div class="setting-row">
+          <label for="text-color">文字颜色:</label>
+          <input type="color" id="text-color" value="#000000">
+        </div>
+        
+        <div class="setting-row">
+          <label for="bg-color">背景颜色:</label>
+          <input type="color" id="bg-color" value="#f0f0f0">
+        </div>
+        
+        <div class="setting-row">
+          <label for="border-color">边框颜色:</label>
+          <input type="color" id="border-color" value="#4285f4">
+        </div>
+      </div>
+      
+      <!-- 行为设置面板 -->
+      <div class="tab-content" id="behavior-tab">
+
+        <div class="setting-section-title">常规行为</div>
+
+        <div class="setting-row checkbox">
+          <input type="checkbox" id="remember-position">
+          <label for="remember-position">记住提示框位置</label>
+        </div>
+        
+        <div class="setting-row">
+            <button id="reset-position">重置位置</button>
+        </div>
+
+        <div class="setting-row checkbox">
+          <input type="checkbox" id="auto-hide">
+          <label for="auto-hide">无操作时自动隐藏</label>
+        </div>
+        
+        <div class="setting-row indent">
+          <label for="hide-delay">延迟(秒):</label>
+          <input type="number" id="hide-delay" min="1" max="60" value="5">
+        </div>
+
+        <div class="setting-row checkbox">
+          <input type="checkbox" id="hover-mode">
+          <label for="hover-mode">仅悬停时可见</label>
+        </div>
+        
+        <div class="setting-row checkbox">
+          <input type="checkbox" id="mini-mode">
+          <label for="mini-mode">迷你模式</label>
+        </div>
+
+        <div class="setting-section-title">隐蔽性设置</div>
+
+        <div class="setting-row checkbox">
+          <input type="checkbox" id="stealth-mode">
+          <label for="stealth-mode">隐形模式 (基础)</label>
+        </div>
+
+        <div class="setting-row checkbox">
+          <input type="checkbox" id="no-border">
+          <label for="no-border">无边框</label>
+        </div>
+
+        <div class="setting-row checkbox">
+          <input type="checkbox" id="ultra-transparent">
+          <label for="ultra-transparent">超透明</label>
+        </div>
+        
+        <div class="hotkey-info">
+          快捷键: <kbd>Alt</kbd> + <kbd>X</kbd> 显示/隐藏
+        </div>
+      </div>
+      
+      <!-- 高级设置面板 -->
+      <div class="tab-content" id="advanced-tab">
+        <div class="setting-row">
+          <label for="match-sensitivity">匹配灵敏度:</label>
+          <select id="match-sensitivity">
+            <option value="strict">严格</option>
+            <option value="moderate">中等</option>
+            <option value="loose">宽松</option>
+          </select>
+        </div>
+        
+        <div class="setting-row">
+          <label for="advance-mode">文本推进模式:</label>
+          <select id="advance-mode">
+            <option value="auto">自动</option>
+            <option value="manual">手动 (暂未实现)</option>
+          </select>
+        </div>
+        
+        <div class="export-import">
+          <button id="export-settings">导出设置</button>
+          <button id="import-settings">导入设置</button>
+          <input type="file" id="import-file" style="display: none;" accept=".json">
+        </div>
+        
+        <div class="setting-row">
+          <button id="reset-settings">恢复默认设置</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="status" id="status-message"></div>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

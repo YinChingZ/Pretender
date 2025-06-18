@@ -1,0 +1,141 @@
+.text-assistant-display {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(240, 240, 240, 0.7);
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-family: "Microsoft YaHei", Arial, sans-serif;
+  font-size: 14px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+  max-width: 300px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: none;
+  transition: all 0.3s ease;
+  opacity: 0.8;
+  border-left: 3px solid #4285f4;
+  user-select: none;
+  cursor: move;
+}
+
+.text-assistant-display:hover {
+  opacity: 1;
+}
+
+/* 隐蔽模式相关样式 */
+.text-assistant-display.stealth-mode {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border-left: none !important;
+  padding: 2px 4px !important;
+}
+
+.text-assistant-display.no-border {
+  border: none !important;
+}
+
+.text-assistant-display.ultra-transparent {
+  opacity: 0.15 !important;
+}
+
+.text-assistant-display.ultra-transparent:hover {
+  opacity: 0.8 !important;
+}
+
+.text-assistant-display.ninja-mode {
+  background-color: transparent !important;
+  color: rgba(0, 0, 0, 0.1) !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-size: 10px !important;
+  padding: 0 !important;
+  opacity: 0.2 !important;
+}
+
+.text-assistant-display.ninja-mode:hover {
+  color: rgba(0, 0, 0, 0.8) !important;
+  opacity: 0.6 !important;
+}
+
+.text-assistant-display.ghost-mode {
+  mix-blend-mode: difference;
+  color: rgba(255, 255, 255, 0.5) !important;
+  background-color: rgba(0, 0, 0, 0.01) !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.text-assistant-display.minimized {
+  max-width: 100px;
+  overflow: hidden;
+}
+
+.text-assistant-display.mini-mode {
+  width: 10px !important;
+  height: 10px;
+  border-radius: 50%;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.text-assistant-display.micro-mode {
+  width: 3px !important;
+  height: 3px;
+  border-radius: 50%;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0.3;
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.text-assistant-display.mini-mode:hover,
+.text-assistant-display.micro-mode:hover {
+  width: auto !important;
+  height: auto;
+  border-radius: 4px;
+  padding: 8px 12px;
+  opacity: 1;
+}
+
+.text-assistant-display.hover-visible {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.text-assistant-display.hover-visible:hover {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.text-assistant-display.blend-in {
+  mix-blend-mode: multiply;
+}
+
+.text-assistant-display.auto-position {
+  transition: top 0.5s ease, left 0.5s ease;
+}
+
+.text-assistant-display.text-only {
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  text-shadow: 0 0 1px rgba(255, 255, 255, 0.7), 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+.text-assistant-display.fade-near-edge {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.text-assistant-display.fade-near-edge.edge-fade {
+  opacity: 0.1 !important;
+  transform: scale(0.8);
+}
